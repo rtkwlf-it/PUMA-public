@@ -1,0 +1,316 @@
+    {
+        "title": "PUMA Preferences",
+        "description": "Configuration for Patch Manager for Apple computers",
+        "__version": "1.0",
+        "__preferencedomain": "com.it.endpoint.puma",
+        "options": {
+            "remove_empty_properties": true
+        },
+        "properties": {
+            "DEBUG": {
+                "title": "Debug",
+                "description": "Enable additional debug output to logs",
+                "default": "Enabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: DEBUG"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "storeAndCheck": {
+                "title": "Store Versions",
+                "description": "Enable this to maintain the timestamp from the first out of date version the user sees. Even if multiple versions release before enforcement.",
+                "default": "Enabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: storeAndCheck"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "silentMode": {
+                "title": "Enable Silent Mode",
+                "description": "Enable this to update applications that are not open.",
+                "default": "Enabled",
+                "type": "integer",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: silentMode"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ],
+                "enum": [1,0]
+            },
+            "plistPath": {
+                "title": "Updates Available Plist",
+                "description": "Path to a Plist where PUMA should check for the updates list.",
+                "default": "/Library/Application Support/PlistPatcher/updatesAvailable.plist",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: plistPath"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "supportAppPrefsFileLocation": {
+                "title": "Support App Plist",
+                "description": "Path where PUMA will send commands to show notifications in Support App.",
+                "default": "/Library/Preferences/nl.root3.support.plist",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: supportAppPrefsFileLocation"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "brandIcon": {
+                "title": "Brand Icon",
+                "description": "Path to a png that will be used for branding PUMA to users. Setting to 'SelfService' will use self service branding.",
+                "default": "SelfService",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: brandIcon"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "brandHeader": {
+                "title": "Brand Header",
+                "description": "Path to a png that will be used for branding PUMA window headers. Setting to 'SelfService' will use self service branding.",
+                "default": "SelfService",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: brandHeader"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "patchDelay": {
+                "title": "Patch Delay",
+                "description": "Time in seconds for how long should PUMA wait before offering updates to non pilot users.",
+                "default": "7200",
+                "type": "integer",
+                "options": {
+                    "infoText": "Key name: patchDelay"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "patchEnforcement": {
+                "title": "Patch Enforcement",
+                "description": "Time in seconds for how long should PUMA wait before declaring an patch as critical and forcing the user to install",
+                "default": "172800",
+                "type": "integer",
+                "options": {
+                    "infoText": "Key name: patchEnforcement"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "pilotUserFile": {
+                "title": "Pilot File",
+                "description": "Path to file, if it exists treat the user as a Pilot Test User. All patches will be treated as critical with no deferral option.",
+                "default": "/Library/Application Support/PlistPatcher/pilot",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: pilotUserFile"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "logLocation": {
+                "title": "Log Location",
+                "description": "Path to where PUMA will output log information.",
+                "default": "/Library/Application Support/PlistPatcher/plistpatcher.log",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: logLocation"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "useNotificationCenter": {
+                "title": "Use Notification Center",
+                "description": "Enable this to use Notification Center for reminders and dialogs other than the main update dialog. (Not deploying this as a managed preference, allows users to set this)",
+                "default": "Disabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: useNotificationCenter"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "meetingDetection": {
+                "title": "Meeting Detection",
+                "description": "Enable this to not show updates to users that are in Teams, Webex, or Zoom meetings.(Not deploying this as a managed preference, allows users to set this)",
+                "default": "Enabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: meetingDetection"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "criticalOverrideMeetingDetection": {
+                "title": "Show Critical Updates in Meetings",
+                "description": "Enable this to show critical updates even if a meeting is active.(Not deploying this as a managed preference, allows users to set this)",
+                "default": "Disabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: criticalOverrideMeetingDetection"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "meetingReminders": {
+                "title": "Meeting Reminders",
+                "description": "Enable this to show a notification that updates were postponed due to an active meeting.(Requires PUMA 1.3 or higher)",
+                "default": "Enabled",
+                "type": "boolean",
+                "options": {
+                    "enum_titles": ["Enabled", "Disabled"],
+                    "infoText": "Key name: meetingReminders"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "helpMenuText": {
+                "title": "Help Menu",
+                "description": "This is a text string of what you would want in the help menu for PUMA.",
+                "default": "## Welcome to Patch Update Manager for Apple (PUMA)<br><br>PUMA makes it easy to apply or defer pending scheduled patches/updates for your apps, <br>no need to check Self Service!",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: helpMenuText"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "bannerText": {
+                "title": "Banner Text",
+                "description": "This is a text string of what you would want branded in the larger windows.",
+                "default": "Company",
+                "type": "string",
+                "options": {
+                    "infoText": "Key name: bannerText"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "backgroundScanSchedule": {
+                "title": "Background Scan Schedule",
+                "description": "What days of the week will a background scan run.(Requires PUMA 1.3 or higher)",
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Day of the Week",
+                    "description": "Capitilize the first letter of the week",
+                    "default": "Monday",
+                    "pattern": "^[A-Z][a-z]{2,5}day$"
+                },
+                "options": {
+                    "infoText": "Key name: backgroundScanSchedule"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            },
+            "loudScanSchedule": {
+                "title": "Foreground Scan Schedule",
+                "description": "What days of the week will a main notification scan run.(Requires PUMA 1.3 or higher)",
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "title": "Day of the Week",
+                    "description": "Capitilize the first letter of the week",
+                    "default": "Monday",
+                    "pattern": "^[A-Z][a-z]{2,5}day$"
+                },
+                "options": {
+                    "infoText": "Key name: loudScanSchedule"
+                },
+                "links": [
+                    {
+                        "rel": "More Information",
+                        "href": "https://github.com/rtkwlf-it/PUMA-public"
+                    }
+                ]
+            }
+        }
+    }
