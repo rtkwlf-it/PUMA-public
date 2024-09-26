@@ -1,0 +1,82 @@
+Description: Uploads the Slack pkg to jamf, creates self service policy, creates script using PlistUpdater.sh as a template, creates policy to deploy PlistUpdater.sh
+Identifier: com.github.puma.slackTest # ID to run this policy
+MinimumVersion: "2.3" # min version of autopkg required to run this recipe
+ParentRecipe: ## Get Slack.app as an installable PKG
+
+
+####################################################################################################
+##########  This is an example file and may not run properly from the directory or repo.  ##########
+##########    Please use this file to create your own autopkg recipes to support PUMA.    ##########
+####################################################################################################
+
+
+Input:
+  NAME: Slack
+  CATEGORY: Jamf Uploader
+  #-- All in one Policy --#
+  POLICY_NAME: "Install Latest %NAME%" # Name for policy in Jamf Pro
+  POLICY_CATEGORY: "Jamf Uploader" # Category for the Policy / Self Service 
+  GROUP_NAME: "Plist Patcher Alpha Group" # Smart group policy is scoped to
+  SELF_SERVICE_DESCRIPTION: "Slack is an instant messaging program designed by Slack Technologies and owned by Salesforce. Although Slack was developed for professional and organizational communications, it has also been adopted as a community platform. "
+  SELF_SERVICE_DISPLAY_NAME: "Install Latest %NAME%"
+  POLICY_EVENT_TRIGGER: "autopatch_SlackSource"
+  SELF_SERVICE_ICON: "%NAME%.png"
+  POLICY_TEMPLATE: JamfPolicyTemplate-no-dock-item-with-trigger.xml
+  UPDATE_PREDICATE: "pkg_uploaded == False" ## stop creation if no pkg uploads
+  #-- Patch Update Manager for Apple --#
+  #-- This is used to setup a local plist file with information for PUMA to action --#
+  PLIST_SCRIPT_NAME: "Deploy Update File for %NAME%"
+  PLIST_POLICY_NAME: "plistupdater %NAME%"
+  PLIST_POLICY_CATEGORY: "Plist Updater via Jamf Uploader"
+  PLIST_GROUP_NAME: "TGPA- Testing Group Pre-Alpha"
+  PLIST_POLICY_TEMPLATE: JamfPolicyTemplate-no-dock-item-script-only-plistpatcher.xml
+  NAMEFORUPDATER: "%NAME%"  # Name of the Process that the app is running as "Firefox is firefox"
+  APPPATH: "/Applications/Slack.app" # Path where PUMA will check for install and will check for the version file
+  SILENT_MODE: 1  # Enables and disables Silent Mode
+
+Process:
+
+  # upload the pkg with specified category
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPackageUploader
+    Arguments:
+      pkg_category: '%CATEGORY%'
+      replace_pkg: false
+
+  # stop creation if no pkg uploads
+  - Processor: StopProcessingIf
+    Arguments:
+      predicate: '%UPDATE_PREDICATE%'
+
+  # Output date in ISO 8601 format in the %datetime% variable
+  - Processor: com.github.haircut.processors/DatetimeOutputter
+    Arguments:
+      datetime_format: "%Y-%m-%d %H:%M:%S"
+      use_utc: true      
+    
+  # Processors after this pkg upload check are set to overwrite older policies if detected
+  # Create policy for pkg install via self service now with 100% less dock icons
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      icon: "%SELF_SERVICE_ICON%"
+      policy_name: "%POLICY_NAME%"
+      policy_template: "%POLICY_TEMPLATE%"
+      replace_policy: true
+
+  # Upload script template to create/modify plist file
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfScriptUploader
+    Arguments:
+      script_name: "Deploy Update File for %NAME%"
+      script_path: "PlistUpdater.sh"
+      replace_script: true
+
+  # Create policy that will deploy the script that creates/modifies the plist file
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyUploader
+    Arguments:
+      policy_name: "%PLIST_POLICY_NAME%"
+      policy_template: "%PLIST_POLICY_TEMPLATE%"
+      replace_policy: true
+
+  # Flush the PLIST Policy as it is built to run once per computer
+  - Processor: com.github.grahampugh.jamf-upload.processors/JamfPolicyLogFlusher
+    Arguments:
+      policy_name: "%PLIST_POLICY_NAME%"

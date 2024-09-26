@@ -1,0 +1,64 @@
+<policy>
+    <!-- General - Name, Enabled/Disabled, Triggers, Frequency, Categories -->
+    <general>
+        <name>%PLIST_POLICY_NAME%</name>
+        <enabled>true</enabled>
+        <trigger>CHECKIN</trigger>
+        <trigger_checkin>true</trigger_checkin>
+        <frequency>Once per computer</frequency>
+        <category>
+            <name>%PLIST_POLICY_CATEGORY%</name>
+        </category>
+    </general>
+    <!-- Scope -->
+    <scope>
+        <all_computers>false</all_computers>
+        <computer_groups>
+            <computer_group>
+                <name>%PLIST_GROUP_NAME%</name>
+            </computer_group>
+        </computer_groups>
+        <exclusions/>
+    </scope>
+    <!-- Packages -->
+    <package_configuration>
+        <packages>
+            <size>0</size>
+        </packages>
+    </package_configuration>
+    <!-- Scripts -->
+    <scripts>
+        <size>1</size>
+        <script>
+            <name>%PLIST_SCRIPT_NAME%</name>
+            <priority>after</priority>
+            <parameter4/>
+            <parameter5/>
+            <parameter6/>
+            <parameter7/>
+            <parameter8/>
+            <parameter9/>
+            <parameter10/>
+            <parameter11/>
+        </script>    
+    </scripts>
+    <!-- Dock Item-->
+    <dock_items>
+        <size>0</size>
+  </dock_items>
+    <!-- Self Service details -->
+    <self_service>
+        <use_for_self_service>false</use_for_self_service>
+    </self_service>
+    <!-- Maintenance e.g. recon -->
+    <maintenance>
+        <recon>true</recon>
+    </maintenance>
+    <!-- Files and processes e.g. run command -->
+    <files_processes/>
+    <!-- User interaction e.g. start and finish messages -->
+    <user_interaction>
+        <message_start/>
+        <message_finish/>
+    </user_interaction>
+</policy>
