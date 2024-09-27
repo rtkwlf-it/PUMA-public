@@ -11,3 +11,18 @@ PUMA is built to remind users to update applications and enforce patches after a
 Forced Installs | Notification only
 :------------------------------------:|:-------------------------------------------:
 ![PUMA end user example listing updates in a window.](/docs/images/CriticalPatchList.png) | ![PUMA end user example listing updates in a window.](/docs/images/RecommendedPatchList.png)
+
+---
+
+# P.U.M.A. would not be possible without the following projects
+
+- [AutoPkg](https://github.com/autopkg/autopkg)
+    > Is a packaging framework that automates several of the manual tasks an admin would otherwise complete before deplying software to systems.
+- [Jamf Uploader](https://github.com/grahampugh/jamf-upload)
+    > A set of AutoPkg Processors designed to interact with Jamf Pro APIs.
+- [Swift Dialog](https://github.com/swiftDialog/swiftDialog)
+    > Is an admin utility app that displays custom dialogs, informative messages or forms to request user input.
+- [Support App](https://github.com/root3nl/SupportApp)
+    > The Support App is developed by Root3, specialized in managing Apple devices.
+- [DatetimeOutputter for AutoPkg](https://macblog.org/autopkg-datetime/)
+    > Helps you reference the current date and time as a variable within your AutoPkg recipes.
