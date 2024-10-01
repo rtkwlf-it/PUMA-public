@@ -1,3 +1,8 @@
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/fbd4c80d-fe9f-41d0-ab2d-ff9fc68f863c" alt="PUMA Public image"/>
+</p>
+
+
 # PUMA: Patch Update Manager for Apple
 
 Patch Update Manager for Apple computers, is a project that helps automate and streamline the process of getting patches for applications to end users.
@@ -14,7 +19,7 @@ Forced Installs | Notification only
 
 ---
 
-# P.U.M.A. would not be possible without the following projects
+## P.U.M.A. would not be possible without the following projects
 
 - [AutoPkg](https://github.com/autopkg/autopkg)
     > Is a packaging framework that automates several of the manual tasks an admin would otherwise complete before deplying software to systems.
